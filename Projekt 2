@@ -1,0 +1,126 @@
+import java.util.Scanner;
+
+public class NWD_NWD {
+
+    public static boolean czyPierwsza(int n) {
+
+        int liczbaDzielnikow = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                liczbaDzielnikow++; // liczbaDzielnikow = liczbaDzielnikow+1
+            }
+        }
+
+        return liczbaDzielnikow == 2;
+    }
+
+    public static int NWD(int liczba1, int liczba2) {
+        int mnoznik = 0;
+        boolean x = true;
+        if (liczba1 < liczba2) {
+            int liczba3 = liczba1;
+            liczba1 = liczba2;
+            liczba2 = liczba3;
+        }
+        while (x) {
+            if (liczba1 % liczba2 != 0) {
+                int liczba3 = liczba1 % liczba2;
+                liczba1 = liczba2;
+                liczba2 = liczba3;
+            } else {
+                mnoznik = liczba2;
+                x = false;
+            }
+        }
+        return mnoznik;
+    }
+
+    public static int NWW(int liczba1, int liczba2) {
+        int NWW = 0;
+        if (liczba1 < liczba2) {
+            int liczba3 = liczba1;
+            liczba1 = liczba2;
+            liczba2 = liczba3;
+        }
+        int liczba3 = liczba1;
+        for (int i = 1; liczba1 % liczba2 != 0; i++) {
+            liczba1 = liczba3 * i;
+        }
+        return liczba1;
+    }
+
+    public static double sredniaAr(double liczba1, double liczba2) {
+        double liczba3 = 0.0;
+        liczba3 = (liczba1 + liczba2) / 2;
+        return liczba3;
+    }
+
+    public static double sredniaGeo(double liczba1, double liczba2) {
+        double liczba3 = 0.0;
+        liczba3 = Math.pow((liczba1 * liczba2), 0.5);
+        return liczba3;
+    }
+
+    public static double sredniaHar(double liczba1, double liczba2) {
+        double liczba3 = 0.0;
+        liczba3 = 2 / ((1 / liczba1) + (1 / liczba2));
+        return liczba3;
+    }
+
+    public static boolean czyDoskonala(int a) {
+
+        int Dzielniki = 0;
+
+        for (int i = 1; i < a; i++) {
+            if (a % i == 0) {
+                Dzielniki = Dzielniki + i;
+            }
+        }
+
+        return Dzielniki == a;
+    }
+
+    public static void main(String[] args) {
+        int liczba1, liczba2;
+        try {
+            Scanner sc1 = new Scanner(System.in);
+            System.out.println("Podaj pierwszą liczbę: ");
+            liczba1 = sc1.nextInt();
+
+            System.out.println("Podaj drugą liczbę: ");
+            liczba2 = sc1.nextInt();
+
+            System.out.println("Suma liczb wynosi: " + (liczba1 + liczba2));
+            System.out.println("Różnica liczb wynosi: " + (liczba1 - liczba2));
+            System.out.println("Iloczyn liczb wynosi: " + (liczba1 * liczba2));
+            System.out.println("Iloraz liczb wynosi: " + (liczba1 / liczba2));
+            System.out.println("Reszta z dzielenia liczby wynosi " + (liczba1 % liczba2));
+
+            if (liczba1 >= liczba2) {
+                System.out.println("Wieksza z liczb to: " + liczba1);
+            } else {
+                System.out.println("Większa z liczb to: " + liczba2);
+            }
+
+            System.out.println("Wieksza z liczb to: " + Math.max(liczba1, liczba2));
+
+            System.out.println("Liczba1 jest pierwsza? " + czyPierwsza(liczba1));
+            System.out.println("Liczba2 jest pierwsza? " + czyPierwsza(liczba2));
+            System.out.println("NWD: " + NWD(liczba1, liczba2));
+            System.out.println("NWW: " + NWW(liczba1, liczba2));
+            System.out.println("Średnia Arytmetyczna: " + sredniaAr(liczba1, liczba2));
+            System.out.println("Średnia Geometyczna: " + sredniaGeo(liczba1, liczba2));
+            System.out.println("Średnia Harmoniczna: " + sredniaHar(liczba1, liczba2));
+            System.out.println("Liczba1 jest doskonała? " + czyDoskonala(liczba1));
+            System.out.println("Liczba2 jest doskonała? " + czyDoskonala(liczba2));
+
+        } catch (ArrayIndexOutOfBoundsException e1) {
+            System.out.println("Podales za malo parametrow");
+        } catch (NumberFormatException e2) {
+            System.out.println("Bladnie podana liczba");
+        } catch (ArithmeticException e3) {
+            System.out.println("Dzielenie przez 0");
+        }
+
+    }
