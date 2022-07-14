@@ -1,0 +1,46 @@
+public static void main(String[] args) {
+
+        String imie = "AjAkdaAta";
+        String nazwisko = "AjAkdaAta";
+        boolean endsWith;
+        boolean a = true;
+
+        if (imie.toLowerCase().endsWith("a")) {
+            System.out.println("Cześć dziewczyno!");
+        } else {
+            System.out.println("Cześć chłopaku!");
+        }
+        String nowe_imie = imie.substring(0, 1).toUpperCase() + imie.toLowerCase().substring(1);
+        String nowe_nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.toLowerCase().substring(1);
+        System.out.println("Nazywasz się " + nowe_imie + " " + nowe_nazwisko + ".");
+
+        int wzrost = 190; //cm
+        int waga = 81; //kg
+
+        double nowy_wzrost = (double) wzrost / 100;
+        double wzrost_kwadrat = Math.pow(nowy_wzrost, 2);
+        double BMI = (double) waga / wzrost_kwadrat;
+        BMI *= 100;
+        BMI = Math.round(BMI);
+        BMI /= 100;
+        System.out.println("Twoje BMI to: " + BMI);
+        
+        if (BMI < 16) {
+            System.out.println("Twoje BMI wskazuje na wygłodzenie!");
+        } else if (BMI >= 16 && BMI < 17) {
+            System.out.println("Twoje BMI wskazuje na wychudzenie!");
+        } else if (BMI >= 17 && BMI < 18.5) {
+            System.out.println("Twoje BMI wskazuje na niedowagę!");
+        } else if (BMI >= 18.5 && BMI < 25) {
+            System.out.println("Twoje BMI wskazuje wartość prawidłową!");
+        } else if (BMI >= 25 && BMI < 30) {
+            System.out.println("Twoje BMI wskazuje nadwagę!");
+        } else if (BMI >= 30 && BMI < 35) {
+            System.out.println("Twoje BMI wskazuje otyłość I stopnia!");
+        } else if (BMI >= 35 && BMI < 40) {
+            System.out.println("Twoje BMI wskazuje otyłość II stopnia!");
+        } else {
+            System.out.println("Twoje BMI wskazuje otyłość III stopnia!");
+        }
+
+    }
